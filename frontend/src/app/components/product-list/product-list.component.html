@@ -1,0 +1,49 @@
+<!-- Header Admin -->
+<app-header-admin></app-header-admin>
+
+<!-- Page Content List Products -->
+<div class="container">
+    <!-- Page Heading and Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+         <small>Administración de productos</small>
+    </h1>
+
+    <!-- Breadcrumb navigation to indicate the user's current location -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+        <li class="breadcrumb-item active">Ver Productos</li>
+    </ol>
+
+    <!-- Button to navigate to the add product page -->
+    <a class="btn btn-primary" routerLink="/admin/product/addProduct"> Crear Producto</a>
+
+    <!-- Section title for the product list -->
+    <h2>Productos</h2>
+
+    <!-- Table displaying the list of products -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <!-- Loop through the products array and display each product in a table row -->
+        <tbody *ngFor="let producto of products"> 
+            <tr>
+                <td>{{producto.code}}</td>
+                <td>{{producto.name}}</td>
+                <td>{{producto.description}}</td>
+                <td>{{producto.price}}</td>
+                <!-- Button to navigate to the edit product page -->
+                <td><button class="btn btn-warning" [routerLink]="['/admin/product/update', producto.id]">Editar</button></td>
+                <!-- Button to delete the product -->
+                <td><button class="btn btn-danger" (click)="deleteProductById(producto.id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>        
+</div>
